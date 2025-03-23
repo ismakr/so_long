@@ -1,48 +1,55 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   create_file.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: isakrout <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/19 15:49:53 by isakrout          #+#    #+#             */
-/*   Updated: 2025/03/23 17:40:57 by isakrout         ###   ########.fr       */
+/*   Created: 2025/03/19 15:53:10 by isakrout          #+#    #+#             */
+/*   Updated: 2025/03/23 01:39:45 by isakrout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	ft_check_file(char *fl)
+void	ft_open_fail(char *str)
 {
-	int	fd;
-
-	if (ft_strnstr(fl, ".ber", ft_strlen(fl)) == 0)
-	{
-		write(2, "invalid file\n", 13);
-		exit(1);
-	}
-	fd = open(fl, O_RDONLY);
-	if (fd < 0)
-	{
-		write(2, "cant open file\n", 15);
-		exit(1);
-	}
-	close(fd);
+	ft_error_message(str);
+	exit(1);
 }
 
-int main(int ac, char *av[])
+void	ft_free(char **ptr)
 {
-	t_long	*main_sct;
+	free(*ptr);
+	*ptr = NULL;
+}
 
-	if (ac != 2)
-		return (1);
-	ft_check_file(av[1]);
-	main_sct = malloc(sizeof(t_long));
-	if (main_sct == NULL)
-		exit(1);
-	ft_parsing(main_sct, av[1]);
-	ft_free_array(main_sct->arr);
-	free(main_sct);
-	//printf("%d\n", main_sct->h);
-	//printf("%d\n", main_sct->w);
+char	*ft_create_file(char *fl)
+{
+	char	*str;
+	char	buff[101];
+	char	*ptr;
+	ssize_t	rd;
+	int	fd;
+
+	fd = open(fl, O_RDONLY);
+	if (fd < 0)
+		ft_open_fail("open fail\n");
+	rd = 1;
+	str = malloc(1);
+	str[0] = '\0';
+	while (rd > 0)
+	{
+		rd = read(fd, &buff, 100);
+		if (read < 0)
+			return (NULL);
+		buff[rd] = '\0';
+		ptr = str;
+		str = ft_strjoin(str, buff);
+		if (str == NULL)
+			return (NULL);
+		ft_free(&ptr);
+	}
+	close(fd);
+	return (str);
 }

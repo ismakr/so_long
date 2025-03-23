@@ -6,60 +6,76 @@
 /*   By: isakrout <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 23:34:49 by isakrout          #+#    #+#             */
-/*   Updated: 2025/03/20 02:56:02 by isakrout         ###   ########.fr       */
+/*   Updated: 2025/03/23 18:04:53 by isakrout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	ft_get_height(char *fl)
-{
-	int	fd;
-	int	h;
-	char	*line;
+/*
+ * cal the h:
+ * i chekced if empty line exist and invalid characters
+ */
 
-	fd = open(fl, O_RDONLY);
-	line = get_next_line(fd);
+int	ft_get_height(char **arr)
+{
+	int	h;
+	int	i;
+
+	i = 0;
 	h = 0;
-	while (line)
+	while (arr[i])
 	{
-		free(line);
-		line = get_next_line(fd);
+		if (ft_strlen(arr[i]) == 0 || ft_check_char(arr[i]) == 0)
+			return (0);
+		i++;
 		h++;
 	}
-	get_next_line(-1);
 	return (h);
 }
 
-int	ft_get_width(char *fl)
-{
-	int	fd;
-	int	w;
-	char	*line;
+/*
+ * cal  the w:
+ * i checked if size is invalid
+ */
 
-	fd = open(fl, O_RDONLY);
-	line = get_next_line(fd);
-	w = ft_strlen(line);
-	while (line)
+int	ft_get_width(char **arr)
+{
+	int	i;
+	int	w;
+
+	i = 0;
+	w = 0;
+	if (arr[i] != NULL)
+		w = ft_strlen(arr[i]);
+	i++;
+	while (arr[i])
 	{
-		if (w != ft_strlen(line))
+		if (w != ft_strlen(arr[i]))
 			return (0);
-		w = ft_strlen(line);
-		free(line);
-		line = get_next_line(fd);
+		w = ft_strlen(arr[i]);
+		i++;
 	}
-	get_next_line(-1);
 	return (w);
 }
-
-void	ft_create_array(t_long *stc, char *fl)
-{
-	stc->h = ft_get_height(fl);
-        stc->w = ft_get_width(fl);
-	stc->arr = NULL;
-}
 /*
-char	**ft_create_array(char *fl)
+ * i created an array for map and its hight and width:
+ * first i checked if P and E and C exists, and then calculate the h and w
+ * it returns 0 on failure
+ */
+
+int	ft_create_array(t_long *stc, char *map_file)
 {
-	char	**arr;
-}*/
+	if (ft_check_exist(map_file) == 0)
+		return (0);
+	stc->arr = ft_split(map_file, '\n');
+	if (stc->arr == NULL)
+		return (0);
+	stc->h = ft_get_height(stc->arr);
+	if (stc->h <= 2)
+		return (ft_free_array(stc->arr), 0);
+        stc->w = ft_get_width(stc->arr);
+	if (stc->w <= 2)
+		return (ft_free_array(stc->arr), 0);
+	return (1);
+}

@@ -1,40 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   player.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: isakrout <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/19 17:01:59 by isakrout          #+#    #+#             */
-/*   Updated: 2025/03/21 14:57:06 by isakrout         ###   ########.fr       */
+/*   Created: 2025/03/23 16:52:53 by isakrout          #+#    #+#             */
+/*   Updated: 2025/03/23 17:23:46 by isakrout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void    ft_struct_fail(char *str, t_long *ptr, char *map_file)
-{       
-        free(ptr);
-        free(map_file);
-        ft_error_message(str);
-        exit(1);
-}
-
-void	ft_invalid_ch(char *str)
+void	ft_player_position(t_long *main_sct)
 {
-	free(str);
-	ft_error_message("invalid char\n");
-}
+	int	i;
+	int	j;
 
-void	ft_error_message(char *str)
-{
-	write(2, str, ft_strlen(str));
-	exit(1);
-}
-
-void	ft_invalid_wall(char *str)
-{
-	free(str);
-	ft_error_message("invalid wall\n");
-	exit(1);
+	i = 0;
+	while  (main_sct->arr[i])
+	{
+		j = 0;
+		while (main_sct->arr[j])
+		{
+			if (main_sct->arr[i][j] == 'P')
+			{
+				main_sct->px = j;
+				main_sct->py = i;
+				return ;
+			}
+			j++;
+		}
+		i++;
+	}
 }

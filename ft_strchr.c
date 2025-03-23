@@ -1,40 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: isakrout <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/19 17:01:59 by isakrout          #+#    #+#             */
-/*   Updated: 2025/03/21 14:57:06 by isakrout         ###   ########.fr       */
+/*   Created: 2024/11/07 18:23:40 by isakrout          #+#    #+#             */
+/*   Updated: 2025/03/21 15:36:35 by isakrout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void    ft_struct_fail(char *str, t_long *ptr, char *map_file)
-{       
-        free(ptr);
-        free(map_file);
-        ft_error_message(str);
-        exit(1);
-}
-
-void	ft_invalid_ch(char *str)
+char	*ft_strchr(char *s, int c)
 {
-	free(str);
-	ft_error_message("invalid char\n");
-}
+	int	i;
 
-void	ft_error_message(char *str)
-{
-	write(2, str, ft_strlen(str));
-	exit(1);
+	i = 0;
+	while (s[i])
+	{
+		if (s[i] == (char)c)
+			return ((char *)&s[i]);
+		i++;
+	}
+	if (s[i] == (char)c)
+		return ((char *)&s[i]);
+	return (NULL);
 }
-
-void	ft_invalid_wall(char *str)
+/*
+int main()
 {
-	free(str);
-	ft_error_message("invalid wall\n");
-	exit(1);
-}
+	const char *s;
+	int c;
+	c = '3';
+	s = "123";
+	printf("%s\n", strchr(s, c));
+	printf("%s\n", ft_strchr(s, c));
+}*/
