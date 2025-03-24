@@ -6,7 +6,7 @@
 /*   By: isakrout <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/22 15:06:38 by isakrout          #+#    #+#             */
-/*   Updated: 2025/03/23 18:18:14 by isakrout         ###   ########.fr       */
+/*   Updated: 2025/03/23 23:13:12 by isakrout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,11 +57,11 @@ int	ft_check_newline(char *map_file)
 	int	i;
 
 	i = 0;
-	while (map_file[i] && map_file[i + 1])
+	while (map_file[i])
 	{
 		if (i == 0 && map_file[i] == '\n')
 			return (0);
-		if (map_file[i] == '\n' && map_file[i + 1] == '\n')
+		if (map_file[i] == '\n' && map_file[i + 1] && map_file[i + 1] == '\n')
 			return (0);
 		i++;
 	}
