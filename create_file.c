@@ -6,7 +6,7 @@
 /*   By: isakrout <isakrout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 15:53:10 by isakrout          #+#    #+#             */
-/*   Updated: 2025/03/24 17:05:02 by isakrout         ###   ########.fr       */
+/*   Updated: 2025/03/25 18:32:27 by isakrout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ char	*ft_create_file(char *fl)
 	char	*str;
 	char	buff[101];
 	char	*ptr;
+	int		fd;
 	ssize_t	rd;
-	int	fd;
 
 	fd = open(fl, O_RDONLY);
 	if (fd < 0)
@@ -50,6 +50,5 @@ char	*ft_create_file(char *fl)
 			return (free(ptr), NULL);
 		ft_free(&ptr);
 	}
-	close(fd);
-	return (str);
+	return (close(fd), str);
 }

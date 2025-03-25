@@ -6,7 +6,7 @@
 /*   By: isakrout <isakrout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 14:57:26 by isakrout          #+#    #+#             */
-/*   Updated: 2025/03/25 03:21:08 by isakrout         ###   ########.fr       */
+/*   Updated: 2025/03/25 17:43:09 by isakrout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,6 @@ void	ft_free_sct(t_long *sct)
 void	ft_esc(t_long *sct)
 {
 	ft_free_sct(sct);
-	write(1, "exit\n", 6);
+	write(1, "exit\n", 5);
 	exit(0);
 }

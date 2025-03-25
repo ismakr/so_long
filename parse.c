@@ -6,7 +6,7 @@
 /*   By: isakrout <isakrout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/22 15:06:38 by isakrout          #+#    #+#             */
-/*   Updated: 2025/03/24 23:00:29 by isakrout         ###   ########.fr       */
+/*   Updated: 2025/03/25 18:22:16 by isakrout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,8 @@ void	ft_parsing(t_long *main_sct, char *fl)
 	char	*map_file;
 
 	map_file = ft_create_file(fl);
+	if (ft_strlen(map_file) == 0)
+		ft_struct_fail("empty file\n", main_sct, map_file);
 	if (ft_check_newline(map_file) == 0)
 		ft_struct_fail("invalid map\n", main_sct, map_file);
 	if (ft_create_array(main_sct, map_file) == 0)
@@ -80,7 +82,7 @@ void	ft_parsing(t_long *main_sct, char *fl)
 	if (ft_check_wall(main_sct) == 0)
 	{
 		ft_free_array(main_sct->arr);
-                ft_struct_fail("invalid map\n", main_sct, map_file);
+        ft_struct_fail("invalid map\n", main_sct, map_file);
 	}
 	if (ft_check_path(main_sct, map_file) == 0)
 	{

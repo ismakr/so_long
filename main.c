@@ -6,7 +6,7 @@
 /*   By: isakrout <isakrout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 15:49:53 by isakrout          #+#    #+#             */
-/*   Updated: 2025/03/25 03:12:12 by isakrout         ###   ########.fr       */
+/*   Updated: 2025/03/25 18:24:29 by isakrout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ int esc_handle(t_long *sct)
 	return (1);
 }
 
-int main(int ac, char *av[])
+int	main(int ac, char *av[])
 {
 	t_long *main_sct;
 
@@ -79,6 +79,4 @@ int main(int ac, char *av[])
 	mlx_key_hook(main_sct->mlx_win, play_hook, main_sct);
 	mlx_hook(main_sct->mlx_win, 17, 0, esc_handle, main_sct);
 	mlx_loop(main_sct->mlx);
-	// printf("%d\n", main_sct->h);
-	// printf("%d\n", main_sct->w);
 }

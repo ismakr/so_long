@@ -6,7 +6,7 @@
 /*   By: isakrout <isakrout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/23 16:52:53 by isakrout          #+#    #+#             */
-/*   Updated: 2025/03/25 03:10:12 by isakrout         ###   ########.fr       */
+/*   Updated: 2025/03/25 17:52:00 by isakrout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,16 @@ void ft_player_position(t_long *main_sct)
 	}
 }
 
-void ft_win(t_long *sct)
+void	ft_move_player_render(t_long *sct, int mx, int my)
 {
-	ft_free_sct(sct);
-	write(1, "you win\n", 9);
-	exit(0);
+	sct->py += my;
+	sct->px += mx;
+	sct->arr[sct->py][sct->px] = 'P';
+	sct->moves++;
+	write(1, "moves: ", 7);
+	ft_putnbr_fd(sct->moves, 1);
+	write(1, "\n", 1);
+	ft_put_images(sct);
 }
 
 void ft_move_player(t_long *sct, int mx, int my)
@@ -52,16 +57,7 @@ void ft_move_player(t_long *sct, int mx, int my)
 		sct->collectible--;
 	}
 	else if (sct->arr[sct->py + my][sct->px + mx] == 'E')
-	{
-		if (sct->collectible == 0)
-			ft_win(sct);
-		else
-		{
-			sct->arr[sct->py + my][sct->px + mx] = 'P';
-			sct->arr[sct->py][sct->px] = '0';
-			sct->if_exit = 1;
-		}
-	}
+		ft_exit_handle(sct, mx, my);
 	else if (sct->if_exit == 1)
 	{
 		sct->arr[sct->py][sct->px] = 'E';
@@ -69,12 +65,7 @@ void ft_move_player(t_long *sct, int mx, int my)
 	}
 	else
 		sct->arr[sct->py][sct->px] = '0';
-	sct->py += my;
-	sct->px += mx;
-	sct->arr[sct->py][sct->px] = 'P';
-	sct->moves++;
-	printf("moves%d\n", sct->moves);
-	ft_load_images(sct);
+	ft_move_player_render(sct, mx, my);
 }
 
 void ft_count_collectible(t_long *sct)

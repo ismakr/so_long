@@ -6,7 +6,7 @@
 /*   By: isakrout <isakrout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 17:01:59 by isakrout          #+#    #+#             */
-/*   Updated: 2025/03/25 03:12:28 by isakrout         ###   ########.fr       */
+/*   Updated: 2025/03/25 17:44:08 by isakrout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ void	ft_invalid_ch(char *str)
 
 void	ft_error_message(char *str)
 {
+	write(2, "Error\n", 6);
 	write(2, str, ft_strlen(str));
 	exit(1);
 }

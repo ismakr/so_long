@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_array_utils.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: isakrout <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: isakrout <isakrout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/22 15:19:15 by isakrout          #+#    #+#             */
-/*   Updated: 2025/03/22 15:23:05 by isakrout         ###   ########.fr       */
+/*   Updated: 2025/03/25 18:30:07 by isakrout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	ft_check_char(char *line)
 	while (line[i] != '\0')
 	{
 		if (line[i] != 'E' && line[i] != '0' && line[i] != '1'
-				&& line[i] != 'P' && line[i] != 'C')
+			&& line[i] != 'P' && line[i] != 'C')
 			return (0);
 		i++;
 	}

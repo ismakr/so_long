@@ -6,14 +6,13 @@
 /*   By: isakrout <isakrout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 15:54:32 by isakrout          #+#    #+#             */
-/*   Updated: 2025/03/25 02:32:56 by isakrout         ###   ########.fr       */
+/*   Updated: 2025/03/25 18:03:10 by isakrout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 #define SO_LONG_H
 #include "/usr/include/minilibx-linux/mlx.h"
-#include <stdio.h>
 #include <unistd.h>
 #include <fcntl.h>
 #include <stdlib.h>
@@ -71,20 +70,21 @@ int	ft_check_flood(char **arr);
 void	ft_flood_fill(char **arr, int x, int y);
 /*player*/
 void	ft_player_position(t_long *main_sct);
-void	ft_move_player_up(t_long *sct);
-void	ft_move_player_right(t_long *sct);
-void	ft_move_player_left(t_long *sct);
-void	ft_move_player_down(t_long *sct);
+void	ft_move_player(t_long *sct, int mx, int my);
+void	ft_win(t_long *sct);
+void	ft_exit_handle(t_long *sct, int mx, int my);
+void ft_win(t_long *sct);
 /*mlx*/
 void    ft_mlx(t_long *sct);
 void	ft_load_images(t_long *sct);
 void	ft_put_images(t_long *sct);
-void	ft_win(t_long *sct);
-void	ft_move_player(t_long *sct, int mx, int my);
 void	ft_count_collectible(t_long *sct);
 int	play_hook(int key, t_long *sct);
 void	*ft_calloc(size_t nmemb, size_t size);
 /*free*/
 void	ft_esc(t_long *sct);
 void	ft_free_sct(t_long *sct);
+/*putnbr*/
+void	ft_putnbr_fd(int n, int fd);
+void	ft_putchar_fd(char c, int fd);
 #endif

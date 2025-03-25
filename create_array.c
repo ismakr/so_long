@@ -3,19 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   create_array.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: isakrout <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: isakrout <isakrout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 23:34:49 by isakrout          #+#    #+#             */
-/*   Updated: 2025/03/23 18:04:53 by isakrout         ###   ########.fr       */
+/*   Updated: 2025/03/25 18:30:25 by isakrout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-/*
- * cal the h:
- * i chekced if empty line exist and invalid characters
- */
 
 int	ft_get_height(char **arr)
 {
@@ -33,11 +28,6 @@ int	ft_get_height(char **arr)
 	}
 	return (h);
 }
-
-/*
- * cal  the w:
- * i checked if size is invalid
- */
 
 int	ft_get_width(char **arr)
 {
@@ -58,11 +48,6 @@ int	ft_get_width(char **arr)
 	}
 	return (w);
 }
-/*
- * i created an array for map and its hight and width:
- * first i checked if P and E and C exists, and then calculate the h and w
- * it returns 0 on failure
- */
 
 int	ft_create_array(t_long *stc, char *map_file)
 {
@@ -79,3 +64,18 @@ int	ft_create_array(t_long *stc, char *map_file)
 		return (ft_free_array(stc->arr), 0);
 	return (1);
 }
+/*
+ * ft_create_array
+ * i created an array for map and its hight and width:
+ * first i checked if P and E and C exists, and then calculate the h and w
+ * it returns 0 on failure
+ *
+ *
+ * ft_get_width
+ * cal  the w:
+ * i checked if size is invalid
+ *
+ * ft_get_height
+ * cal the h:
+ * i chekced if empty line exist and invalid characters
+ */
