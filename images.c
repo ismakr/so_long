@@ -6,7 +6,7 @@
 /*   By: isakrout <isakrout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 02:02:23 by isakrout          #+#    #+#             */
-/*   Updated: 2025/03/24 03:21:47 by isakrout         ###   ########.fr       */
+/*   Updated: 2025/03/25 03:00:16 by isakrout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 void	ft_image_fail(t_long *sct)
 {
-	free(sct->mlx);
-	free(sct->mlx_win);
-	ft_free_array(sct->arr);
+	ft_free_sct(sct);
+	ft_error_message("image fail\n");
 }
+
 void	ft_put_images(t_long *sct)
 {
 	int	i;
@@ -56,4 +56,3 @@ void	ft_load_images(t_long *sct)
 		ft_image_fail(sct);
 	ft_put_images(sct);
 }
-

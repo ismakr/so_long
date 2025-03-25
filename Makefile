@@ -1,7 +1,7 @@
-C_FILES = create_array.c create_array_utils.c create_file.c free.c ft_strjoin.c error.c ft_strnstr.c main.c parse.c ft_split.c player.c check_path.c images.c
+C_FILES = create_array.c create_array_utils.c create_file.c free.c ft_strjoin.c error.c ft_strnstr.c main.c parse.c ft_split.c player.c check_path.c images.c ft_calloc.c
 O_FILES = $(C_FILES:.c=.o)
 CC = cc
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -Wall -Werror -Wextra -g
 CLINK = -L/usr/include/minilibx-linux/ -lmlx -lX11 -lXext
 NAME = so_long
 

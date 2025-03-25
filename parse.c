@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: isakrout <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: isakrout <isakrout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/22 15:06:38 by isakrout          #+#    #+#             */
-/*   Updated: 2025/03/23 23:13:12 by isakrout         ###   ########.fr       */
+/*   Updated: 2025/03/24 23:00:29 by isakrout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,4 +88,5 @@ void	ft_parsing(t_long *main_sct, char *fl)
 		ft_struct_fail("invalid map\n", main_sct, map_file);
 	}
 	free(map_file);
+	ft_count_collectible(main_sct);
 }

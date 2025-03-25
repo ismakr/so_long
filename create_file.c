@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_file.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: isakrout <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: isakrout <isakrout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 15:53:10 by isakrout          #+#    #+#             */
-/*   Updated: 2025/03/23 01:39:45 by isakrout         ###   ########.fr       */
+/*   Updated: 2025/03/24 17:05:02 by isakrout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ char	*ft_create_file(char *fl)
 		ptr = str;
 		str = ft_strjoin(str, buff);
 		if (str == NULL)
-			return (NULL);
+			return (free(ptr), NULL);
 		ft_free(&ptr);
 	}
 	close(fd);

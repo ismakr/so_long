@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: isakrout <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: isakrout <isakrout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 17:01:59 by isakrout          #+#    #+#             */
-/*   Updated: 2025/03/23 23:48:08 by isakrout         ###   ########.fr       */
+/*   Updated: 2025/03/25 03:12:28 by isakrout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ void	ft_invalid_wall(char *str)
 
 void	ft_mlx_fail(t_long *sct)
 {
-	ft_free_array(sct->arr);
-	free(sct);
+	ft_free_sct(sct);
 	ft_error_message("mlx fail\n");
 }
